@@ -30,8 +30,8 @@ endfunction
 
 function! droid#init(approot)
   let b:approot = a:approot
-  set makeprg=ant
-  set efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+  exe "setlocal makeprg=ant -f ".b:approot."/build.xml"
+  setlocal efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
   call s:bufinit()
 endfunction
 
