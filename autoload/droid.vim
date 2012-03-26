@@ -7,7 +7,7 @@ endif
 let g:autoloaded_droid = '0.1'
 
 " {{{ Utilities
-"
+
 function! s:error(str)
   echohl ErrorMsg
   echomsg a:str
@@ -17,7 +17,7 @@ endfunction
 
 " }}}
 " {{{ Libs functions
-"
+
 function droid#list_avds()
   let avds = s:listavds()
   call setqflist(avds)
@@ -30,6 +30,8 @@ endfunction
 
 function! droid#init(approot)
   let b:approot = a:approot
+  set makeprg=ant
+  set efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
   call s:bufinit()
 endfunction
 
@@ -160,7 +162,6 @@ function! s:readtemplate(prefix)
 endfunction
 
 " {{{ Initialization
-
 
 " }}}
 
