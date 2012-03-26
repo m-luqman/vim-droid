@@ -30,13 +30,7 @@ endfunction
 
 function! droid#init(approot)
   let b:approot = a:approot
-  setlocal makeprg=ant\ -quiet\ -emacs
   call s:bufinit()
-endfunction
-
-function! droid#ant(bang, cmd)
-  exe "chdir " .b:approot
-  exe "make" (a:bang ? '!' : '') . ' ' . a:cmd
 endfunction
 
 " }}}
@@ -46,13 +40,6 @@ function! s:bufinit()
   call s:addrelated("menu")
   call s:addrelated("xml")
   call s:addrelated("values")
-
-  command! -buffer -bang AntClean     call droid#ant(<bang>0, "clean")
-  command! -buffer -bang AntCompile   call droid#ant(<bang>0, "compile")
-  command! -buffer -bang AntDebug     call droid#ant(<bang>0, "debug")
-  command! -buffer -bang AntRelease   call droid#ant(<bang>0, "release")
-  command! -buffer -bang AntInstall   call droid#ant(<bang>0, "install")
-  command! -buffer -bang Antuninstall call droid#ant(<bang>0, "uninstall")
 
   command! -buffer DroidListAvd call droid#list_avds()
   command! -buffer -nargs=* -complete=customlist,s:listavdscomplete DroidRunAvd  call droid#run_avd()
@@ -172,7 +159,4 @@ function! s:readtemplate(prefix)
   endif 
 endfunction
 
-" {{{ Initialization
-
-" }}}
-
+" vim:set ft=vim sw=2 ts=2: 
