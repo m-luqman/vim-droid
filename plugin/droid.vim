@@ -25,7 +25,7 @@ endfunction
 augroup droidAppDetect
   autocmd!
   autocmd BufNewFile,BufRead * call s:Detect(expand("<afile>:p"))
-  autocmd VimEnter * if expand("<amatch>") == "" && !exists("b:approot") | call s:Detect(getcwd()) | endif | if exists("b:approot") | silent doau User BufEnterRails | endif
+  autocmd VimEnter * if !exists("b:approot") | call s:Detect(getcwd()) | endif
 augroup END
 
 " vim:set ft=vim sw=2 ts=2: 
