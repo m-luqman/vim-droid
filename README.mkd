@@ -1,0 +1,16 @@
+droid.vim
+=========
+
+A few utilities such as quick access to resources, templates, and an emulator
+interface.
+
+This was inspired by tpope's [rails.vim]() and some of the code was also
+borrowed from there. Thanks tpope.
+
+TODO
+-----
+
+* Implement DroidListAvds, 
+            DroidRunAvd (with completion)
+* Add make/ant support
+* Omnicomplete

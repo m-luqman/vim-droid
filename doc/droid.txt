@@ -1,0 +1,22 @@
+*droid.txt*	Plugin for developing Android apps
+
+Author:  Tim Horton
+
+:Rlayouts					|droid-:Rlayouts|
+:Rmenu					        |droid-:Rmenu|
+:values					        |droid-:Rvalues|
+:Rxml					        |droid-:Rxml|
+
+						*droid-:Rlayouts*
+:Rlayouts [{name}]      Edit the specified layout resource.
+
+						*droid-:Rmenu*
+:Rmenu [{name}]         Edit the specified menu resource.
+
+						*droid-:Rvalues*
+:Rvalues [{name}]       Edit the specified values resource.
+
+						*droid-:Rxml*
+:Rxml [{name}]          Edit the specified xml resource.
+
+ vim:tw=78:ts=8:ft=help:norl:
