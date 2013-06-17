@@ -4,11 +4,3 @@ droid.vim
 A few utilities such as quick access to resources, templates, and an emulator
 interface.
 
-This was inspired by [rails.vim][rails] and some of the code was also borrowed.
-from there.
-
-TODO
------
-* Implement DroidListAvds, DroidRunAvd (with completion)
-
-[rails]: https://github.com/tpope/vim-rails
