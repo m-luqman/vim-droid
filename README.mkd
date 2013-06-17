@@ -1,6 +1,5 @@
 droid.vim
 =========
 
-A few utilities such as quick access to resources, templates, and an emulator
-interface.
+A few utilities such as quick access to resources and templates.
 
