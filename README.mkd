@@ -9,9 +9,6 @@ from there.
 
 TODO
 -----
-* Implement DroidListAvds, 
-            DroidRunAvd (with completion)
-* Add make/ant support
-* Omnicomplete
+* Implement DroidListAvds, DroidRunAvd (with completion)
 
 [rails]: https://github.com/tpope/vim-rails

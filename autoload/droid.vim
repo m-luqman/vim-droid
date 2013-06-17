@@ -33,16 +33,32 @@ function! droid#init(approot)
   call s:bufinit()
 endfunction
 
+function! droid#tags_command() 
+  if executable("ctags-exuberant")
+    let cmd = "ctags-exuberant"
+  else if executable("ctags")
+    let cmd = "ctags"
+  elseif executable("ctags.exe")
+    let cmd = "ctags.exe"
+  else
+    return s:error("ctags not found")
+  endif
+  exe '!'.cmd.' -f /tmp/tags -R  '.b:approot
+  set tags=/tmp/tags
+endfunction
+
 " }}}
 
 function! s:bufinit()
-  call s:addrelated("layouts")
+  call s:addrelated("src")
+  call s:addrelated("layout")
   call s:addrelated("menu")
   call s:addrelated("xml")
   call s:addrelated("values")
 
   command! -buffer DroidListAvd call droid#list_avds()
   command! -buffer -nargs=* -complete=customlist,s:listavdscomplete DroidRunAvd  call droid#run_avd()
+  command! -buffer Dtags  call droid#tags_command()
 endfunction
 
 function! s:listavds()
@@ -92,12 +108,12 @@ function! s:valuesEdit(cmd,prefix,...)
   call s:simpleedit(a:cmd, a:prefix, "/res/values/", (a:0 ? a:1 : ''))
 endfunction
 
-function! s:layoutsList(A,L,P)
-  return s:relglob("/res/layouts/", "*")
+function! s:layoutList(A,L,P)
+  return s:relglob("/res/layout/", "*")
 endfunction
 
-function! s:layoutsEdit(cmd,prefix,...)
-  call s:simpleedit(a:cmd, a:prefix, "/res/layouts/",  (a:0 ? a:1 : ''))
+function! s:layoutEdit(cmd,prefix,...)
+  call s:simpleedit(a:cmd, a:prefix, "/res/layout/",  (a:0 ? a:1 : ''))
 endfunction
 
 function! s:menuList(A,L,P)
@@ -106,6 +122,14 @@ endfunction
 
 function! s:menuEdit(cmd,prefix,...)
   call s:simpleedit(a:cmd, a:prefix, "/res/menu/",  (a:0 ? a:1 : ''))
+endfunction
+
+function! s:srcList(A,L,P)
+  return s:relglob("/src/", "**/*.*")
+endfunction
+
+function! s:srcEdit(cmd,prefix,...)
+  call s:simpleedit(a:cmd, a:prefix, "/src/",  (a:0 ? a:1 : ''))
 endfunction
 
 function! s:xmlList(A,L,P)
