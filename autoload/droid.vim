@@ -50,7 +50,7 @@ endfunction
 " }}}
 
 function! s:bufinit()
-  call s:addrelated("src")
+  call s:addrelated("java")
   call s:addrelated("layout")
   call s:addrelated("menu")
   call s:addrelated("xml")
@@ -109,7 +109,7 @@ function! s:valuesEdit(cmd,prefix,...)
 endfunction
 
 function! s:layoutList(A,L,P)
-  return s:relglob("/res/layout/", "*")
+  return s:relglob("/res/layout/", a:A . "*")
 endfunction
 
 function! s:layoutEdit(cmd,prefix,...)
@@ -117,23 +117,23 @@ function! s:layoutEdit(cmd,prefix,...)
 endfunction
 
 function! s:menuList(A,L,P)
-  return s:relglob("/res/menu/", "*")
+  return s:relglob("/res/menu/", a:A . "*")
 endfunction
 
 function! s:menuEdit(cmd,prefix,...)
   call s:simpleedit(a:cmd, a:prefix, "/res/menu/",  (a:0 ? a:1 : ''))
 endfunction
 
-function! s:srcList(A,L,P)
-  return s:relglob("/src/", "**/*.*")
+function! s:javaList(A,L,P)
+  return s:relglob("/java/", "**/".a:A."*")
 endfunction
 
-function! s:srcEdit(cmd,prefix,...)
-  call s:simpleedit(a:cmd, a:prefix, "/src/",  (a:0 ? a:1 : ''))
+function! s:javaEdit(cmd,prefix,...)
+  call s:simpleedit(a:cmd, a:prefix, "/java/",  (a:0 ? a:1 : ''))
 endfunction
 
 function! s:xmlList(A,L,P)
-  return s:relglob("res/xml/", "*")
+  return s:relglob("res/xml/", a:A . "*")
 endfunction
 
 function! s:xmlEdit(cmd,prefix,...)
